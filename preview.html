@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Preview</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .resume {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.12);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .contact {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-line;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .download-btn {
+            display: block;
+            width: 180px;
+            margin: 20px auto;
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .download-btn:hover {
+            background: #1a252f;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .download-btn {
+                display: none;
+            }
+
+            .resume {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="resume">
+
+    <div class="header">
+        <h1>{{ data.name }}</h1>
+        <div class="contact">
+            Email: {{ data.email }} | Phone: {{ data.phone }}<br>
+            Address: {{ data.address }}<br>
+            {% if data.linkedin and data.linkedin != 'NA' %}
+            LinkedIn: {{ data.linkedin }}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if data.objective %}
+    <div class="section">
+        <h2>Career Objective</h2>
+        <p>{{ data.objective }}</p>
+    </div>
+    {% endif %}
+
+    {% if data.education %}
+    <div class="section">
+        <h2>Education</h2>
+        <table>
+            <tr>
+                <th>Degree</th>
+                <th>Institute</th>
+                <th>Year</th>
+                <th>Percentage</th>
+            </tr>
+
+            {% for row in data.education.split('\n') %}
+            {% if row %}
+            <tr>
+                {% for col in row.split('|') %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    {% if data.experience %}
+    <div class="section">
+        <h2>Experience</h2>
+        <table>
+            <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Duration</th>
+                <th>Description</th>
+            </tr>
+
+            {% for row in data.experience.split('\n') %}
+            {% if row %}
+            <tr>
+                {% for col in row.split('|') %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    {% if data.skills %}
+    <div class="section">
+        <h2>Skills</h2>
+        <ul style="columns: 2;">
+            {% for skill in data.skills.split(',') %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if data.projects %}
+    <div class="section">
+        <h2>Projects</h2>
+        <p>{{ data.projects }}</p>
+    </div>
+    {% endif %}
+
+    {% if data.certifications %}
+    <div class="section">
+        <h2>Certifications</h2>
+        <p>{{ data.certifications }}</p>
+    </div>
+    {% endif %}
+
+    {% if data.languages %}
+    <div class="section">
+        <h2>Languages</h2>
+        <p>{{ data.languages }}</p>
+    </div>
+    {% endif %}
+
+    {% if data.hobbies %}
+    <div class="section">
+        <h2>Hobbies</h2>
+        <p>{{ data.hobbies }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<button class="download-btn" onclick="window.print()">Download PDF</button>
+
+</body>
+</html>
