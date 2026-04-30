@@ -99,10 +99,6 @@
             font-size: 15px;
         }
 
-        .download-btn:hover {
-            background: #1a252f;
-        }
-
         @media print {
             body {
                 background: white;
@@ -130,9 +126,14 @@
     <div class="header">
         <h1>{{ data.name }}</h1>
         <div class="contact">
-            Email: {{ data.email }} | Phone: {{ data.phone }}<br>
+            {% if data.email %}Email: {{ data.email }}{% endif %}
+            {% if data.phone %} | Phone: {{ data.phone }}{% endif %}<br>
+
+            {% if data.address %}
             Address: {{ data.address }}<br>
-            {% if data.linkedin and data.linkedin != 'NA' %}
+            {% endif %}
+
+            {% if data.linkedin and data.linkedin != 'NA' and data.linkedin != 'NO' %}
             LinkedIn: {{ data.linkedin }}
             {% endif %}
         </div>
@@ -145,7 +146,6 @@
     </div>
     {% endif %}
 
-    {% if data.education %}
     <div class="section">
         <h2>Education</h2>
         <table>
@@ -156,20 +156,19 @@
                 <th>Percentage</th>
             </tr>
 
-            {% for row in data.education.split('\n') %}
-            {% if row %}
+            {% for d, i, y, p in education %}
+            {% if d or i or y or p %}
             <tr>
-                {% for col in row.split('|') %}
-                <td>{{ col }}</td>
-                {% endfor %}
+                <td>{{ d }}</td>
+                <td>{{ i }}</td>
+                <td>{{ y }}</td>
+                <td>{{ p }}</td>
             </tr>
             {% endif %}
             {% endfor %}
         </table>
     </div>
-    {% endif %}
 
-    {% if data.experience %}
     <div class="section">
         <h2>Experience</h2>
         <table>
@@ -180,18 +179,18 @@
                 <th>Description</th>
             </tr>
 
-            {% for row in data.experience.split('\n') %}
-            {% if row %}
+            {% for c, r, d, desc in experience %}
+            {% if c or r or d or desc %}
             <tr>
-                {% for col in row.split('|') %}
-                <td>{{ col }}</td>
-                {% endfor %}
+                <td>{{ c }}</td>
+                <td>{{ r }}</td>
+                <td>{{ d }}</td>
+                <td>{{ desc }}</td>
             </tr>
             {% endif %}
             {% endfor %}
         </table>
     </div>
-    {% endif %}
 
     {% if data.skills %}
     <div class="section">
