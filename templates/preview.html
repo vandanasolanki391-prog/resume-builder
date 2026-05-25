@@ -21,7 +21,9 @@
         }
 
         .header {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 2px solid #222;
             padding-bottom: 15px;
             margin-bottom: 25px;
@@ -38,6 +40,14 @@
             font-size: 14px;
             color: #444;
             line-height: 1.6;
+        }
+
+        .photo img {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 6px;
         }
 
         .section {
@@ -124,19 +134,30 @@
 <div class="resume">
 
     <div class="header">
-        <h1>{{ data.name }}</h1>
-        <div class="contact">
-            {% if data.email %}Email: {{ data.email }}{% endif %}
-            {% if data.phone %} | Phone: {{ data.phone }}{% endif %}<br>
 
-            {% if data.address %}
-            Address: {{ data.address }}<br>
-            {% endif %}
+        <div>
+            <h1>{{ data.name }}</h1>
 
-            {% if data.linkedin and data.linkedin != 'NA' and data.linkedin != 'NO' %}
-            LinkedIn: {{ data.linkedin }}
-            {% endif %}
+            <div class="contact">
+                {% if data.email %}Email: {{ data.email }}{% endif %}
+                {% if data.phone %} | Phone: {{ data.phone }}{% endif %}<br>
+
+                {% if data.address %}
+                Address: {{ data.address }}<br>
+                {% endif %}
+
+                {% if data.linkedin %}
+                LinkedIn: {{ data.linkedin }}
+                {% endif %}
+            </div>
         </div>
+
+        {% if data.photo %}
+        <div class="photo">
+            <img src="{{ url_for('static', filename=data.photo) }}">
+        </div>
+        {% endif %}
+
     </div>
 
     {% if data.objective %}
@@ -148,6 +169,7 @@
 
     <div class="section">
         <h2>Education</h2>
+
         <table>
             <tr>
                 <th>Degree</th>
@@ -157,20 +179,19 @@
             </tr>
 
             {% for d, i, y, p in education %}
-            {% if d or i or y or p %}
             <tr>
                 <td>{{ d }}</td>
                 <td>{{ i }}</td>
                 <td>{{ y }}</td>
                 <td>{{ p }}</td>
             </tr>
-            {% endif %}
             {% endfor %}
         </table>
     </div>
 
     <div class="section">
         <h2>Experience</h2>
+
         <table>
             <tr>
                 <th>Company</th>
@@ -180,14 +201,12 @@
             </tr>
 
             {% for c, r, d, desc in experience %}
-            {% if c or r or d or desc %}
             <tr>
                 <td>{{ c }}</td>
                 <td>{{ r }}</td>
                 <td>{{ d }}</td>
                 <td>{{ desc }}</td>
             </tr>
-            {% endif %}
             {% endfor %}
         </table>
     </div>
@@ -195,7 +214,8 @@
     {% if data.skills %}
     <div class="section">
         <h2>Skills</h2>
-        <ul style="columns: 2;">
+
+        <ul style="columns:2;">
             {% for skill in data.skills.split(',') %}
             <li>{{ skill }}</li>
             {% endfor %}
