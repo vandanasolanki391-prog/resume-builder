@@ -26,6 +26,21 @@ def sitemap():
 <loc>https://resume-builder-idja.onrender.com/</loc>
 </url>
 </urlset>""", 200, {'Content-Type': 'application/xml'}
+    @app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/privacy-policy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 
 @app.route('/preview', methods=['POST'])
 def preview():
