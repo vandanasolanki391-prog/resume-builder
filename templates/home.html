@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-80YM26EZ07"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-80YM26EZ07');
+</script>
+
+<title>Resume Builder</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.58);
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.96);
+        padding: 40px;
+        border-radius: 16px;
+        max-width: 1100px;
+        margin: auto;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        backdrop-filter: blur(8px);
+    }
+
+    h1 {
+        font-size: 42px;
+        color: #2c3e50;
+        margin-bottom: 12px;
+    }
+
+    .main-text {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .features {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin: 25px 0 35px;
+        flex-wrap: wrap;
+    }
+
+    .feature {
+        background: #f4f6f8;
+        padding: 12px 18px;
+        border-radius: 20px;
+        font-size: 13px;
+        color: #333;
+    }
+
+    .template-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 22px;
+        margin-top: 20px;
+    }
+
+    .template-card {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+        transition: 0.3s;
+    }
+
+    .template-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    }
+
+    .template-preview {
+        height: 245px;
+        background: #f7f9fb;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 18px;
+        text-align: left;
+        font-size: 12px;
+        color: #333;
+        overflow: hidden;
+    }
+
+    .preview-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .line {
+        height: 7px;
+        background: #d8dde3;
+        margin: 8px 0;
+        border-radius: 10px;
+    }
+
+    .line.short { width: 55%; }
+    .line.medium { width: 75%; }
+    .line.full { width: 100%; }
+
+    .ats-preview {
+        border-top: 6px solid #2c3e50;
+    }
+
+    .modern-preview {
+        background: linear-gradient(90deg, #2c3e50 0 30%, #f7f9fb 30% 100%);
+        color: #222;
+    }
+
+    .modern-preview .side {
+        color: white;
+        width: 27%;
+        float: left;
+        font-size: 11px;
+    }
+
+    .modern-preview .main {
+        width: 66%;
+        float: right;
+    }
+
+    .photo-preview {
+        text-align: center;
+    }
+
+    .dummy-photo {
+        width: 70px;
+        height: 70px;
+        background: #2c3e50;
+        border-radius: 50%;
+        margin: 0 auto 12px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #2c3e50;
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    .btn:hover {
+        background: #1a252f;
+    }
+
+    @media(max-width: 600px) {
+        .card {
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="card">
+
+        <h1>Professional Resume Builder</h1>
+
+        <p class="main-text">
+            Create a modern, clean and professional resume in minutes.
+            Select a template, fill your details and generate a job-ready resume instantly.
+        </p>
+
+        <div class="features">
+            <div class="feature">Easy to Use</div>
+            <div class="feature">Premium Design</div>
+            <div class="feature">Template Preview</div>
+            <div class="feature">Photo Design Options</div>
+            <div class="feature">Instant PDF Download</div>
+        </div>
+
+        <h2>Select Resume Template</h2>
+
+        <div class="template-grid">
+
+            <div class="template-card">
+                <div class="template-preview ats-preview">
+                    <div class="preview-name">YOUR NAME</div>
+                    <div class="line medium"></div>
+                    <div class="line short"></div>
+                    <hr>
+                    <b>Career Objective</b>
+                    <div class="line full"></div>
+                    <div class="line medium"></div>
+                    <b>Education</b>
+                    <div class="line full"></div>
+                    <b>Skills</b>
+                    <div class="line medium"></div>
+                </div>
+                <h3>ATS Friendly</h3>
+                <p>Simple, clean and professional format.</p>
+                <a class="btn" href="/create?template=ats">Use This Template</a>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview modern-preview">
+                    <div class="side">
+                        <b>CONTACT</b>
+                        <div class="line full"></div>
+                        <div class="line medium"></div>
+                        <br>
+                        <b>SKILLS</b>
+                        <div class="line full"></div>
+                        <div class="line medium"></div>
+                    </div>
+                    <div class="main">
+                        <div class="preview-name">YOUR NAME</div>
+                        <div class="line medium"></div>
+                        <hr>
+                        <b>Profile</b>
+                        <div class="line full"></div>
+                        <div class="line medium"></div>
+                        <b>Experience</b>
+                        <div class="line full"></div>
+                    </div>
+                </div>
+                <h3>Modern Professional</h3>
+                <p>Stylish layout with side section.</p>
+                <a class="btn" href="/create?template=modern">Use This Template</a>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview photo-preview">
+                    <div class="dummy-photo"></div>
+                    <div class="preview-name">YOUR NAME</div>
+                    <div class="line medium" style="margin:auto;"></div>
+                    <br>
+                    <b>Career Objective</b>
+                    <div class="line full"></div>
+                    <div class="line medium"></div>
+                    <b>Education</b>
+                    <div class="line full"></div>
+                </div>
+                <h3>Photo Resume</h3>
+                <p>Professional resume with photo design.</p>
+                <a class="btn" href="/create?template=photo">Use This Template</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
