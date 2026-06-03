@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -13,8 +13,9 @@ def home():
 
 @app.route('/create')
 def create():
-    return render_template('form.html')
-
+    template = request.args.get("template", "ats")
+    return render_template('form.html', selected_template=template)
+    
 @app.route('/preview', methods=['POST'])
 def preview():
 
