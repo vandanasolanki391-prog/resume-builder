@@ -17,6 +17,16 @@ def create():
     template = request.args.get("template", "ats")
     return render_template('form.html', selected_template=template)
 
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://resume-builder-idja.onrender.com/</loc>
+</url>
+</urlset>""", 200, {'Content-Type': 'application/xml'}
+
 @app.route('/preview', methods=['POST'])
 def preview():
     data = request.form.to_dict()
