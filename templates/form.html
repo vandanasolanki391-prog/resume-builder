@@ -219,7 +219,8 @@
 
         <div class="section">
             <h2>Career Objective</h2>
-            <textarea name="objective" rows="4"></textarea>
+            <textarea id="objective" name="objective" rows="4"></textarea>
+            <button type="button" class="add-btn" onclick="generateObjective()">Generate Career Objective</button>
         </div>
 
         <div class="section">
@@ -342,7 +343,34 @@ function toggleProjectBox() {
         box.style.display = "none";
     }
 }
+    <script>
+
+function addEducationRow() {
+   ...
+}
+
+function addExperienceRow() {
+   ...
+}
+
+function toggleProjectBox() {
+   ...
+}
+
+function generateObjective() {
+    let objectives = [
+        "Motivated and detail-oriented professional seeking an opportunity to apply my skills and knowledge in a reputed organization while contributing to its growth and success.",
+        "To obtain a responsible position where I can utilize my education, skills and abilities for professional growth and contribute effectively to the organization.",
+        "Hardworking and quick-learning candidate looking for an opportunity to work in a professional environment and enhance my knowledge, skills and experience.",
+        "Dedicated and result-oriented individual seeking a challenging role where I can contribute to organizational success through commitment, teamwork and continuous learning."
+    ];
+
+    let randomObjective = objectives[Math.floor(Math.random() * objectives.length)];
+    document.getElementById("objective").value = randomObjective;
+}
+
 </script>
+
 
 </body>
 </html>
