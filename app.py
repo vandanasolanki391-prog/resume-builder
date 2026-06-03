@@ -4,8 +4,9 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'static'
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def home():
@@ -15,26 +16,17 @@ def home():
 def create():
     template = request.args.get("template", "ats")
     return render_template('form.html', selected_template=template)
-    
+
 @app.route('/preview', methods=['POST'])
 def preview():
-
     data = request.form.to_dict()
-
-    # PHOTO UPLOAD
     photo = request.files.get('photo')
 
     if photo and photo.filename != '':
         filename = secure_filename(photo.filename)
-
-        # static folder create if not exists
-        if not os.path.exists(app.config['UPLOAD_FOLDER']):
-            os.makedirs(app.config['UPLOAD_FOLDER'])
-
         photo_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         photo.save(photo_path)
-
-        data['photo'] = filename
+        data['photo'] = f"uploads/{filename}"
     else:
         data['photo'] = None
 
