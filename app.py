@@ -26,7 +26,7 @@ def sitemap():
 <loc>https://resume-builder-idja.onrender.com/</loc>
 </url>
 </urlset>""", 200, {'Content-Type': 'application/xml'}
-    @app.route('/about')
+@app.route('/about')
 def about():
     return render_template('about.html')
 
