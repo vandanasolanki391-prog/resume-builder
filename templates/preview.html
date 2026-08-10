@@ -438,12 +438,12 @@
     <div class="section">
         <h2>Skills</h2>
 
-        <ul style="columns:2;">
-            {% for skill in data.skills.split(',') %}
-            {% if skill.strip() %}
-            <li>{{ skill.strip() }}</li>
-            {% endif %}
-            {% endfor %}
+        <ul> {% for skill in data.skills.split(' 
+            ') %} 
+            {% if skill.strip() %} 
+            <li>{{ skill.strip() }}</li> 
+            {% endif %} 
+            {% endfor %} 
         </ul>
     </div>
     {% endif %}
