@@ -106,7 +106,7 @@ def preview():
 @app.route('/save', methods=['POST'])
 def save_resume():
     data = request.form.to_dict()
-
+    
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
@@ -122,6 +122,22 @@ def save_resume():
     <h2>Resume Saved Successfully!</h2>
     <a href="/my-resumes">Go to My Resumes</a>
     '''
+    @app.route('/save-preview', methods=['POST'])
+def save_preview():
+    data = request.form.to_dict()
+
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    c.execute(
+        'INSERT INTO resumes (data) VALUES (?)',
+        (json.dumps(data),)
+    )
+
+    conn.commit()
+    conn.close()
+
+    return render_template('save_success.html')
 
 # ================= MY RESUMES =================
 @app.route('/my-resumes')
