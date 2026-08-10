@@ -481,8 +481,20 @@
 {% endif %}
 
 <div class="action-box">
+
+    <form action="/save-preview" method="POST" style="display:inline;">
+
+        {% for key, value in data.items() %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+
+        <button type="submit" class="download-btn">Save This Resume</button>
+    </form>
+
     <button class="download-btn" onclick="window.print()">Download PDF</button>
+
     <a class="back-btn" href="/">Create Another</a>
+
 </div>
 
 </body>
