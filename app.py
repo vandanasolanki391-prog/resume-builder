@@ -117,12 +117,13 @@ def save_resume():
 
     conn.commit()
     conn.close()
-
     return '''
     <h2>Resume Saved Successfully!</h2>
     <a href="/my-resumes">Go to My Resumes</a>
     '''
-    @app.route('/save-preview', methods=['POST'])
+
+
+@app.route('/save-preview', methods=['POST'])
 def save_preview():
     data = request.form.to_dict()
 
@@ -138,7 +139,6 @@ def save_preview():
     conn.close()
 
     return render_template('save_success.html')
-
 # ================= MY RESUMES =================
 @app.route('/my-resumes')
 def my_resumes():
