@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Resumes</title>
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+            padding:30px;
+        }
+        .card{
+            background:white;
+            padding:20px;
+            margin-bottom:15px;
+            border-radius:10px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn{
+            display:inline-block;
+            background:#2c3e50;
+            color:white;
+            padding:8px 15px;
+            border-radius:6px;
+            text-decoration:none;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My Saved Resumes</h1>
+
+{% for r in resumes %}
+<div class="card">
+    <h3>{{ r.data.name }}</h3>
+    <p>{{ r.data.email }}</p>
+
+    <a class="btn" href="/edit/{{ r.id }}">Edit Resume</a>
+</div>
+{% endfor %}
+
+</body>
+</html>
